@@ -3,8 +3,6 @@
 
 import re, tkinter
 
-# TODO: Add uppercase and lowercase requirement
-# TODO: Add 1 digit requirement
 def passwordCheck():
     print('Password Checked')
     numRegex = re.compile(r'''(
@@ -21,6 +19,8 @@ def passwordCheck():
 
     password = text.get()
 
+    # TODO: Debug to find why password checker doesn't update label
+
     if len(password) >= 8:
         if numRegex.search(password) is not None:
             if capRegex.search(password) is not None:
@@ -28,12 +28,25 @@ def passwordCheck():
                     print('Good!')
                     label['fg'] = 'green'
                     label['text'] = 'Good!'
+                else:
+                    print('Password is not enough!')
+                    label['fg'] = 'red'
+                    label['text'] = 'Password is not strong enough!'
+            else:
+                print('Password is not enough!')
+                label['fg'] = 'red'
+                label['text'] = 'Password is not strong enough!'
+        else:
+            print('Password is not enough!')
+            label['fg'] = 'red'
+            label['text'] = 'Password is not strong enough!'
     else:
         print('Password is not enough!')
         label['fg'] = 'red'
         label['text'] = 'Password is not strong enough!'
     
- 
+# TODO: Adjust frame to resize with window 
+
 # Create Tkinter Frame
 root = tkinter.Tk()
 
@@ -56,6 +69,8 @@ check.grid(row=3,column=0, sticky='S')
 # Quit Button
 quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy)
 quit.grid(row=3,column=1, sticky='S')
+
+# TODO: Add Requirements Label
 
 
 
