@@ -19,8 +19,6 @@ def passwordCheck():
 
     password = text.get()
 
-    # TODO: Debug to find why password checker doesn't update label
-
     if len(password) >= 8:
         if numRegex.search(password) is not None:
             if capRegex.search(password) is not None:
@@ -52,7 +50,7 @@ root = tkinter.Tk()
 
 # Set title and window size
 root.title('Password Checker')
-root.geometry("300x125")
+root.geometry("300x225")
 
 # Label for correctness check
 label = tkinter.Label(root,text='')
@@ -71,8 +69,8 @@ quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy)
 quit.grid(row=3,column=1, sticky='S')
 
 # TODO: Add Requirements Label
-
-
+requirements = tkinter.Label(root,text='Password must contain:\nAt least 8 characters\nAt least 1 lowercase letter\nAt least 1 uppercase letter\nAt least 1 number')
+requirements.grid(row=4,columnspan=2, sticky='S', padx=20, pady=10)
 
 root.mainloop()
 
