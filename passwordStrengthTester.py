@@ -21,18 +21,17 @@ def passwordCheck():
 
     password = text.get()
 
-    password1 = numRegex.search(password)
-    password2 = capRegex.search(password1)
-    password3 = lowerRegex.search(password2)
-
-    if password3 is None or len(password) < 8:
-        #print('Password is not strong enough')
+    if len(password) >= 8:
+        if numRegex.search(password) is not None:
+            if capRegex.search(password) is not None:
+                if lowerRegex.search(password) is not None:
+                    print('Good!')
+                    label['fg'] = 'green'
+                    label['text'] = 'Good!'
+    else:
+        print('Password is not enough!')
         label['fg'] = 'red'
         label['text'] = 'Password is not strong enough!'
-    else:
-        #print('Good!')
-        label['fg'] = 'green'
-        label['text'] = 'Good!'
     
  
 # Create Tkinter Frame
