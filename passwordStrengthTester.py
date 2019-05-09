@@ -42,6 +42,13 @@ def passwordCheck():
         print('Password is not enough!')
         label['fg'] = 'red'
         label['text'] = 'Password is not strong enough!'
+
+def showHide():
+    if var.get() == 1:
+        text['show'] = ''
+    else:
+        text['show'] = '*'
+
     
 # TODO: Adjust frame to resize with window 
 
@@ -50,27 +57,32 @@ root = tkinter.Tk()
 
 # Set title and window size
 root.title('Password Checker')
-root.geometry("300x225")
+root.geometry("425x250")
 
 # Label for correctness check
 label = tkinter.Label(root,text='')
 label.grid(row=1,columnspan=2, sticky='S', padx=20, pady=10)
 
 # Create a text box and have it span the center
-text = tkinter.Entry(root, width=30)
-text.grid(row=2,columnspan=2, padx=20, pady=10, sticky='N')
+text = tkinter.Entry(root, width=30, show='*')
+text.grid(row=2,column=0, padx=20, pady=10, sticky='N')
+
+# Show Password checkbox
+var = tkinter.IntVar()
+show = tkinter.Checkbutton(root, text='Show Password', variable=var, command=showHide)
+show.grid(row=2, column=1)
 
 # Button to check password
 check = tkinter.Button(root, text='Check Password', command=passwordCheck)
-check.grid(row=3,column=0, sticky='S')
+check.grid(row=3,columnspan=2, sticky='S')
 
 # Quit Button
 quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy)
-quit.grid(row=3,column=1, sticky='S')
+quit.grid(row=4,columnspan=2, sticky='S')
 
-# TODO: Add Requirements Label
+# Requirements Label
 requirements = tkinter.Label(root,text='Password must contain:\nAt least 8 characters\nAt least 1 lowercase letter\nAt least 1 uppercase letter\nAt least 1 number')
-requirements.grid(row=4,columnspan=2, sticky='S', padx=20, pady=10)
+requirements.grid(row=5,columnspan=2, sticky='S', padx=20, pady=10)
 
 root.mainloop()
 
