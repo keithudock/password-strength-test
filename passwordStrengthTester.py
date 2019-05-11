@@ -3,7 +3,7 @@
 
 import re, tkinter
 
-def passwordCheck():
+def passwordCheck(event=None):
     print('Password Checked')
     numRegex = re.compile(r'''(
         .*[0-9]{1,}.*
@@ -75,6 +75,7 @@ show.grid(row=2, column=1)
 # Button to check password
 check = tkinter.Button(root, text='Check Password', command=passwordCheck)
 check.grid(row=3,columnspan=2, sticky='S')
+root.bind('<Return>', passwordCheck)
 
 # Quit Button
 quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy)
