@@ -60,30 +60,27 @@ root.title('Password Checker')
 root.geometry("425x250")
 
 # Label for correctness check
-label = tkinter.Label(root,text='')
-label.grid(row=1,columnspan=2, sticky='S', padx=20, pady=10)
+label = tkinter.Label(root,text='').grid(row=1,columnspan=2, sticky='S', padx=20, pady=10)
 
 # Create a text box and have it span the center
-text = tkinter.Entry(root, width=30, show='*')
-text.grid(row=2,column=0, padx=20, pady=10, sticky='N')
+text = tkinter.Entry(root, width=30, show='*').grid(row=2,column=0, padx=20, pady=10, sticky='N')
 
 # Show Password checkbox
 var = tkinter.IntVar()
-show = tkinter.Checkbutton(root, text='Show Password', variable=var, command=showHide)
-show.grid(row=2, column=1)
+show = tkinter.Checkbutton(root, text='Show Password', variable=var, command=showHide).grid(row=2, column=1)
 
 # Button to check password
-check = tkinter.Button(root, text='Check Password', command=passwordCheck)
-check.grid(row=3,columnspan=2, sticky='S')
+check = tkinter.Button(root, text='Check Password', command=passwordCheck).grid(row=3,columnspan=2, sticky='S')
 
 # Quit Button
-quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy)
-quit.grid(row=4,columnspan=2, sticky='S')
+quit = tkinter.Button(root, text='QUIT', fg='red', command=root.destroy).grid(row=4,columnspan=2, sticky='S')
+
 
 # Requirements Label
 requirements = tkinter.Label(root,text='Password must contain:\nAt least 8 characters\nAt least 1 lowercase letter\nAt least 1 uppercase letter\nAt least 1 number')
 requirements.grid(row=5,columnspan=2, sticky='S', padx=20, pady=10)
 
+root.bind('<Return>', passwordCheck)
 root.mainloop()
 
 
