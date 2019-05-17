@@ -5,11 +5,18 @@ import java.util.regex.Pattern;
 
 public class GUIProgram extends Frame implements ActionListener{
     TextField text;
+    Frame f;
+    Label l;
 
     public GUIProgram(){
 
         //Create Frame
-        Frame f = new Frame("Password Strength Tester");
+        f = new Frame("Password Strength Tester");
+
+        // Create a blank label
+        l = new Label();
+        l.setBounds(85,150,200,25);
+        f.add(l);
 
         // Create a check button
         Button btn = new Button("Check");
@@ -32,7 +39,7 @@ public class GUIProgram extends Frame implements ActionListener{
         passwordCheck(text.getText());
     }
 
-    public static void passwordCheck(String password) {
+    public void passwordCheck(String password) {
         Pattern lower = Pattern.compile(".*[a-z].*");
         Pattern upper = Pattern.compile(".*[A-Z].*");
         Pattern number = Pattern.compile(".*[1-9].*");
@@ -45,21 +52,26 @@ public class GUIProgram extends Frame implements ActionListener{
             if (lowerMatch.find()) {
                 if (upperMatch.find()) {
                     if (numberMatch.find()){
+                        l.setText("Good!");
                         System.out.println("Good!");
                     }
                     else {
+                        l.setText("Password is not strong enough");
                         System.out.println("Password is not strong enough | Need at least one number");
                     }
                 }
                 else {
+                    l.setText("Password is not strong enough");
                     System.out.println("Password is not strong enough | Need at least one uppercase letter");
                 }
             }
             else {
+                l.setText("Password is not strong enough");
                 System.out.println("Password is not strong enough | Need at least one lowercase letter");
             }
         }
         else {
+            l.setText("Password is not strong enough");
             System.out.println("Password is not strong enough | Need at least eight characters");
         }
     }
