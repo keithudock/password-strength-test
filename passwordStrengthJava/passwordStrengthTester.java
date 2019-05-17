@@ -8,6 +8,8 @@ class PasswordStrengthTester {
         Scanner scan = new Scanner(System.in);
         String input;
 
+        new GUIProgram();
+
         while(true){
             System.out.println("Enter password (enter 'quit' to exit): ");
             input = scan.nextLine();
