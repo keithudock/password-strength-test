@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GUIProgram extends Frame implements ActionListener{
+public class GUIProgram implements ActionListener{
     TextField text;
     Frame f;
     Label l;
@@ -28,6 +28,14 @@ public class GUIProgram extends Frame implements ActionListener{
         text = new TextField();
         text.setBounds(125, 80, 100,25);
         f.add(text);
+
+        // Allow the window to close
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                f.dispose();
+            }
+        });
 
         // Set window size and visibility
         f.setSize(350,200);//frame size 300 width and 300 height
